@@ -1,24 +1,24 @@
 import { View } from "react-native";
-import { UnistylesTheme, createUnistyles } from 'react-native-unistyles';
+import { UnistylesRegistry, UnistylesTheme, createStyleSheet, useStyles } from 'react-native-unistyles';
 import theme from "../themes/unistyles-theme";
+// import { UnistyleRegistry } from "react-native-unistyles/lib/typescript/src/core/UnistyleRegistry";
 
-const breakpoints = {
+export const breakpoints = {
     xs: 0,
-    sm: 200,
-    md: 500
-};
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    superLarge: 2000,
+    tvLike: 4000
+  }
 
-const {
-    createStyles,
-    useStyles
-} = createUnistyles(breakpoints);
+UnistylesRegistry.addBreakpoints(breakpoints).addThemes({ 'light': theme }).addConfig({
+    initialTheme: 'light'
+})
 
 const Unistyles = () => {
-    return (
-        <UnistylesTheme theme={theme}>
-            <Demo />
-        </UnistylesTheme>
-    )
+    return <Demo />
 };
 
 const Demo = () => {
@@ -36,7 +36,7 @@ const Demo = () => {
     )
 };
 
-const stylesheet = createStyles(theme => ({
+const stylesheet = createStyleSheet(theme => ({
     container: {
         display: 'flex',
         flexDirection: 'row'
