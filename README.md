@@ -26,49 +26,16 @@ Demo video with `TAMAGUI_TARGET=native expo start --no-dev --minify`:
 https://github.com/efstathiosntonas/react-native-style-libraries-benchmark/assets/717975/9942825e-2e97-47ac-9311-0df98718b3b1
 
 
-## Results - Rendering Time for 1000 Empty Views (ms) in DEV mode
+## Results - Rendering Time for 1000 Empty Views (ms) in release mode
 
 Mac Specs: 
-Mac Studio M1 Ultra 1TB SSD 64GB RAM\
-Simulator: iPhone 13, iOS 16.4
+MacBook Pro 2020 Intel Core i5 256GB SSD 8GB RAM\
+Simulator: Xiaomi Poco F4
 
-|             | 1   | 2   | 3   | 4   | 5   | 6   | Avg    | % Slowdown |
-|-------------|-----|-----|-----|-----|-----|-----|--------|------------|
-| Native      | 142 | 138 | 141 | 143 | 143 | 144 | 141.83 | 0          |
-| Unistyles   | 149 | 144 | 149 | 147 | 149 | 149 | 147.5  | 4%         |
-| twrnc       | 172 | 173 | 163 | 160 | 161 | 161 | 164.16 | 15.74%     |
-| fast-styles | 170 | 167 | 172 | 175 | 172 | 172 | 171.33 | 20.81%     |
-| Restyle     | 188 | 188 | 187 | 189 | 189 | 187 | 188.33 | 32.77%     |
-| Zephyr      | 184 | 195 | 190 | 190 | 192 | 184 | 189.16 | 33.197%    |
-| Styled v6   | 222 | 215 | 230 | 204 | 224 | 230 | 221.83 | 56.47%     |
-| Emotion     | 276 | 267 | 270 | 268 | 276 | 271 | 271.33 | 91.42%     |
-| NativeWind  | 289 | 298 | 301 | 286 | 300 | 295 | 294.83 | 107.99%    |
-| Gluestack   | 291 | 295 | 302 | 298 | 306 | 311 | 301.5  | 112.84%    |
-| Tamagui     | 306 | 304 | 308 | 302 | 304 | 306 | 305.0  | 115.21%    |
-| Dripsy      | 692 | 665 | 690 | 672 | 675 | 681 | 678.33 | 378.99%    |
+|               | 1   | 2   | 3   | 4   | 5   | 6   | Avg    | % Slowdown |
+|---------------|-----|-----|-----|-----|-----|-----|--------|------------|
+| NativeWind    | 148 | 154 | 147 | 150 | 150 | 150 | 149.83 |            |
+| NativeWind v4 | 126 | 94  | 190 | 190 | 191 | 208 | 166.5  |            |
 
-### scores with `TAMAGUI_TARGET=native expo start --no-dev --minify`:
-(after every run metro is shut down, always start fresh)
 
-|             | 1   | 2   | 3   | 4   | 5   | 6   | Avg    | % Slowdown |
-|-------------|-----|-----|-----|-----|-----|-----|--------|------------|
-| Native      | 54  | 55  | 53  | 60  | 59  | 56  | 55.5   | 0          |
-| Unistyles   | 57  | 57  | 56  | 58  | 59  | 58  | 57.83  | 4.21%      |
-| fast-styles | 65  | 66  | 66  | 68  | 67  | 64  | 66     | 18.92%     |
-| twrnc       | 66  | 74  | 68  | 66  | 65  | 67  | 67     | 20.72%     |
-| Zephyr      | 76  | 79  | 77  | 78  | 78  | 79  | 77.83  | 40.36%     |
-| Restyle     | 76  | 77  | 78  | 78  | 85  | 78  | 78.33  | 41.08%     |
-| Styled v6   | 100 | 100 | 100 | 100 | 101 | 102 | 100.5  | 81.08%     |
-| Emotion     | 134 | 136 | 135 | 141 | 134 | 136 | 135.33 | 144.86%    |
-| NativeWind  | 144 | 136 | 134 | 139 | 133 | 138 | 137.33 | 147.68%    |
-| Tamagui     | 156 | 151 | 158 | 159 | 156 | 159 | 156.5  | 182.88%    |
-| Gluestack   | 177 | 179 | 175 | 178 | 177 | 178 | 177.66 | 220.97%    |
-| Dripsy      | 538 | 566 | 556 | 564 | 556 | 563 | 556.16 | 904.65%    |
-
-# Reproduction Steps
-1. Start the profiler by pressing Shift + M and open React Dev Tools.
-2. Open profiler and hit record
-3. Press the toggle button and stop recording
-4. Record the time to render App.ts
-5. Average the result across at least 3 runs
 
